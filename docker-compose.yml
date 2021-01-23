@@ -1,0 +1,75 @@
+version: "3.8"
+
+services:
+  #
+  # [ server stack ]
+  #
+  # - VueJs (different repo)
+  # - Express/NodeJs/GraphQL
+  # - MongoDb
+  # - Redis
+  #
+  nodejs:
+    build: ./
+    container_name: nodejs
+    restart: unless-stopped
+    environment:
+      - PORT=4000
+      - NODE_ENV=production
+      - IS_NODE=true
+      - MONGODB_URL=admin:secret@mongodb:27017/?compressors=zlib&gssapiServiceName=mongodb
+      - JWT_SECRET=3f1d9f7c8b9eebcea072a9f4c33c1d8b0469af43c2ebdc06f6695180d5b013fc
+    ports:
+      - 4000:4000
+    networks:
+      - webappnetwork
+    depends_on:
+      - mongodb-server
+      - redis-server
+    volumes:
+      - api:/app/
+      - api:/node_modules/
+
+  mongodb-server:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    volumes:
+      - mongodb:/data/configdb
+      - mongodb:/data/db
+    networks:
+      - webappnetwork
+
+  redis-server:
+    image: redis:alpine3.12
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - 6379:6379
+    volumes:
+      - redis:/data
+    networks:
+      - webappnetwork
+
+#
+# [ volumes definition ]
+#
+# creates Docker volumes which can be mounted by other containers too e.g. for backup
+# default should be local
+#
+volumes:
+  mongodb:
+  redis:
+  api:
+
+#
+# [ networks definition ]
+# default should be bridge
+#
+networks:
+  webappnetwork:
