@@ -6,8 +6,7 @@
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "serve": "pm2 start ecosystem.yaml --interpreter babel-node -- src/index.js --trace-sync-io && pm2 monit",
-    "stop": "pm2 stop ecosystem.yaml",
+    "serve": "pm2 start ecosystem.yaml --no-daemon",
     "lint": "eslint ./src --fix",
     "build": "babel ./src --out-dir ./dist --copy-files --minified --comments=false",
     "test": "echo \"Error: no test specified\" && exit 1",

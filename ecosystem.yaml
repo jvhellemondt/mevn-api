@@ -1,11 +1,13 @@
 apps:
   - script:           src/index.js
-    watch:            true
+    watch:            ./src
     cwd:              ./
+    time:             true
     log_date_format:  YYYY-MM-DD HH:mm:ss
     out_file:         ./logs/out-0.log
     error_file:       ./logs/err-0.log
     exec_interpreter: babel-node
+    interpreter_args: -- src/index.js --trace-sync-io
     exec_mode:        fork
     env:
       NODE_ENV: development
