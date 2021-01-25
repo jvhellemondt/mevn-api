@@ -28,7 +28,6 @@ services:
       - redis-server
     volumes:
       - api:/app/
-      - api:/node_modules/
 
   mongodb-server:
     image: mongo:latest
