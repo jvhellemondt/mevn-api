@@ -35,4 +35,4 @@ FROM base AS release
 COPY --from=builder /tmp/node_modules /app/node_modules
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./
-CMD ["pm2-runtime", "./dist/index.js"]
+CMD ["pm2-runtime", "./dist/index.js", "--only", "production"]

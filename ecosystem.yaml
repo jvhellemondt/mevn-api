@@ -1,5 +1,6 @@
 apps:
-  - script:           src/index.js
+  - name:             development
+    script:           src/index.js
     watch:            ./src
     cwd:              ./
     time:             true
@@ -11,3 +12,13 @@ apps:
     exec_mode:        fork
     env:
       NODE_ENV: development
+  - name:            production
+    script:          dist/index.js
+    cwd:             ./
+    time:            true
+    log_date_format: YYYY-MM-DD HH:mm:ss
+    out_file:        ./logs/out-0.log
+    error_file:      ./logs/err-0.log
+    exec_mode:       cluster
+    env:
+      NODE_ENV: production
