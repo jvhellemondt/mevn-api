@@ -27,12 +27,10 @@ export const expressAuthentication = async (request, response, next) => {
     const user = await UserModel.findById(userId)
     if (!user) return new Error(`No user was found with id ${userId}`)
 
-    Object.assign(request, {
-      user,
-      accessToken
-    })
+    Object.assign(request, { user, accessToken })
     return next()
   } catch (e) {
+    response.locals.authorization = e
     return next()
   }
 }
@@ -46,5 +44,5 @@ export const onlyAuthenticated = async (resolve, source, args, context, info) =>
 export const onlyGuest = async (resolve, source, args, context, info) => {
   const { user } = context.request
   if (user) return Promise.reject(new Error('This operation cannot be performed while logged in'))
-  return resolve(source, args, context, info);
-};
+  return resolve(source, args, context, info)
+}
