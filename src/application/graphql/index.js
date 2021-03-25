@@ -1,6 +1,6 @@
 import { graphqlHTTP } from 'express-graphql';
 
-import schema from './schemas';
+import schema from 'src/application/graphql/schemas';
 import config from '$/setup';
 
 export default graphqlHTTP(async request => ({

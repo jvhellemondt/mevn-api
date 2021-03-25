@@ -1,4 +1,4 @@
-import { EXPRESS_PORT } from './constants';
+import { EXPRESS_PORT } from 'src/application/setup/constants';
 
 export default (app) => {
   app.use('*', (request, response) => {
