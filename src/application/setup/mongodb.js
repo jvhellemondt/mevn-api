@@ -1,5 +1,5 @@
 import mongoose                                                             from 'mongoose';
-import { IS_DEV, MONGO_DB, MONGO_HOST, MONGO_PASS, MONGO_PORT, MONGO_USER } from 'src/application/setup/constants';
+import { IS_DEV, MONGO_DB, MONGO_HOST, MONGO_PASS, MONGO_PORT, MONGO_USER } from '$/application/setup/constants';
 
 const mongoConnectionString = `${MONGO_USER}:${MONGO_PASS}@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}?compressors=zlib&gssapiServiceName=mongodb`;
 console.warn(`🌐 Connecting to MongoDb on ${mongoConnectionString}`);

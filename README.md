@@ -94,3 +94,19 @@ Never expose your secret key -- nor store it in your version control (Github/ Gi
 #### Generate secret
 
 `crypto.randomBytes(256).toString('hex').slice(0, 64)`
+
+## Kubernetes
+
+Launch minikube
+`minikube start`
+`minikube dashboard --url`
+
+
+Update dockerhub with dockerfile
+```bash
+COMMIT=$(git rev-parse --verify HEAD) && docker image build -f "./Dockerfile" . --build-arg "app_name=mern-api" -t "mern-api:latest" -t "mern-api:${COMMIT}" -t "jennesnl/mern-api:latest"
+
+docker image tag mern-api:latest jennesnl/mern-api:latest
+docker login
+docker push jennesnl/mern-api:latest
+```

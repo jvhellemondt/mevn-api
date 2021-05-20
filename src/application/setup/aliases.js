@@ -1,5 +1,5 @@
 import moduleAlias  from 'module-alias';
-import { ROOT_DIR } from 'src/application/setup/constants';
+import { ROOT_DIR } from './constants';
 
 moduleAlias.addAliases({
   '$': `${ROOT_DIR}/src`,

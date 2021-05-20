@@ -10,7 +10,7 @@ services:
   # - Redis
   #
   nodejs:
-    build: ./
+    image: jennesnl/mern-api:latest
     container_name: nodejs
     restart: unless-stopped
     environment:

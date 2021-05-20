@@ -1,5 +1,5 @@
 import Redis                      from 'ioredis'
-import { REDIS_HOST, REDIS_PORT } from 'src/application/setup/constants'
+import { REDIS_HOST, REDIS_PORT } from '$/application/setup/constants'
 
 console.warn(`🌐 Connecting to Redis on redis://${REDIS_HOST}:${REDIS_PORT}`)
 const client = new Redis({

@@ -1,6 +1,6 @@
 // https://github.com/graphql-compose/graphql-compose-mongoose/issues/158
-import config from '$/setup'
-import redis from '$/setup/redis'
+import config from '$/application/setup'
+import redis from '$/application/setup/redis'
 import jwt from 'jsonwebtoken'
 import { UserModel } from './models.js'
 

@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken';
 import { schemaComposer } from 'graphql-compose';
 
 import { UserModel } from './models.js';
-import config from '$/setup';
-import redis from '$/setup/redis';
+import config from '$/application/setup';
+import redis from '$/application/setup/redis';
 
 export const authenticate = schemaComposer.createResolver({
   kind: 'mutation',

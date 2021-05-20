@@ -4,7 +4,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 
-import graphql from '$/graphql'
+import graphql from '$/application/graphql'
 import { expressAuthentication } from '~/authentication/middleware'
 
 export default app => {
